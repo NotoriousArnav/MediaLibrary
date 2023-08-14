@@ -1,0 +1,8 @@
+{% block content %}
+  <h1>Videos</h1>
+  <ul>
+    {% for video in videos %}
+      <li><a href="{% url 'video-detail' video.slug %}">{{ video.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

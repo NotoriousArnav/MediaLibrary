@@ -1,0 +1,10 @@
+{% block content %}
+  <h1>{{ playlist.title }}</h1>
+  <p>{{ playlist.description }}</p>
+  <h2>Videos in this Playlist:</h2>
+  <ul>
+    {% for video in playlist.videos.all %}
+      <li><a href="{% url 'video-detail' video.slug %}">{{ video.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% block content %}
+  <h1>Playlists</h1>
+  <ul>
+    {% for playlist in playlists %}
+      <li><a href="{% url 'playlist-detail' playlist.slug %}">{{ playlist.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
