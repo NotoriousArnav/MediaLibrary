@@ -9,10 +9,11 @@ class Video(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     thumbnail = models.ImageField(upload_to='thumbnails/')
-    video_file = models.FileField(upload_to='videos/')
+    video_file = models.FileField(upload_to='videos/', max_length=500)
     upload_date = models.DateTimeField(auto_now_add=True)
     duration = models.DurationField()
     slug = models.SlugField(unique=True, editable=False)  # Automatically populated
+    continuation = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.title}  {self.slug}"
@@ -22,6 +23,7 @@ class Video(models.Model):
         base_slug = slugify(self.title)
         random_string = ''.join(random.choices(string.ascii_letters + string.digits, k=6))
         self.slug = f"{base_slug}-{random_string}"
+        self.video_file.name = f"{self.uuid}.{self.video_file.name.split('.')[-1]}"
         super().save(*args, **kwargs)
 
 class Playlist(models.Model):

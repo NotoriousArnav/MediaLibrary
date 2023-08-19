@@ -24,3 +24,13 @@ class VideoDetailView(DetailView):
     template_name = 'video/video_detail.html'
     context_object_name = 'video'
 
+    def get_objects(self, queryset=None):
+        slug = self.kwargs.get('slug')
+        uuid = self.kwargs.get('uuid')
+
+        if slugs:
+            return get_object_or_404(Video, slug=slug)
+        elif uuid:
+            return get_object_or_404(Video, uuid=uuid)
+        else:
+            pass

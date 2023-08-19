@@ -3,7 +3,7 @@ from .views import *
 
 urlpatterns = [
     path('videos/', VideoListView.as_view(), name='video-list'),
-    path('videos/<slug:slug>/', VideoDetailView.as_view(), name='video-detail'),
+    path('videos/<slug:slug>/', VideoDetailView.as_view(), name='video-detail-slug'),
     path('playlists/', PlaylistListView.as_view(), name='playlist-list'),
     path('playlists/<slug:slug>/', PlaylistDetailView.as_view(), name='playlist-detail'),    
 ]
